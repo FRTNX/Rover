@@ -27,8 +27,11 @@ The first line describes the size of the current grid. This zone's boundary is a
 The second line describes the rovers initial position on the grid along with its direction. In this example the rover is facing east at point (1, 2).
 
 The third and final line is the list of commands the rover is to execute where
+
     M : moves the rover forward in the direction it faces
+
     L : Turns the rover 90 degrees to the left from its current direction
+    
     R : Turns the rover 90 degress to right from its current direction
     
 These commands are located in a file called ```cmds```. The values may be changed as necessary while respecting the required format described above.
