@@ -3,9 +3,13 @@
 ### Installation
 
 To install and run the rover, simply clone the repository
+
 ```git clone https://github.com/FRTNX/Rover```
+
 then
+
 ```cd Rover```
+
 ```python3 rover.py```
 
 ### So Whats Going On?
