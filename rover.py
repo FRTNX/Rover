@@ -1,9 +1,15 @@
 # Rover simulator
 
-def init():                                         
+
+def init():
+    current_pos, direction, grid_boundaries, commands = get_commands()
+    run(current_pos, direction, grid_boundaries, commands)
+
+
+def get_commands():                                         
     f = open('cmds', 'r')                                                     
     ff = f.read().split('\n')                                               
-    f.close()                                                              
+    f.close()                                                    
     print('got the following commands: %s' % ff)                          
     raw_limits = ff[0].split()
     x_limit = int(raw_limits[0])
@@ -13,7 +19,7 @@ def init():
     y = int(sp_raw[1])    
     direction = sp_raw[2]                                               
     commands = list(ff[2])
-    run((x, y), direction, (x_limit, y_limit), commands)
+    return (x, y), direction, (x_limit, y_limit), commands
 
 
 def run(current_pos, direction, boundary, commands):
@@ -28,6 +34,8 @@ def run(current_pos, direction, boundary, commands):
         command = commands[0]
         if command == "M":
             current_pos = move_forward(current_pos, direction, boundary)
+            if current_pos == 'Out of bounds':
+                exit()
         else:             
             direction = shift(direction+command)        
         commands.pop(0)
@@ -52,12 +60,19 @@ def move_forward(current_pos, current_direction, limits):
     if not out_of_bounds(x, y, limits[0], limits[1]):  
         return (x, y)
     else:   
-        print('Rover has moved out of grid boundary')
-        exit()
+        return 'Out of bounds'
 
 
-def out_of_bounds(x, y, x_limit, y_limit):               
-    if (x <= x_limit) and (y <= y_limit):                                         
+def out_of_bounds(x, y, x_limit, y_limit):
+    """Checks whether the rover has moved off surveyed grid.
+
+       params:
+           x       -> int: x coordinate
+           y       -> int: y coordinate
+           x_limit -> int: furthest allowed value of x from origin
+           y_limit -> int: furthest allowed value of y from origin
+    """               
+    if (x <= x_limit and x >= 0) and (y <= y_limit and y >= 0):                                         
         return False                                                        
     else:                                                                  
         return True  
