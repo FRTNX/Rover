@@ -41,7 +41,9 @@ def run(current_pos, direction, boundary, commands):
                                                                   boundary,
                                                                   commands
     ))                        
-    if commands == []:          
+    if commands == []:
+        print('Rover completed running commands facing %s on grid point %s' % (get_direction_name(direction),
+                                                                               current_pos))          
         return current_pos          
     else:                                
         command = commands[0]
@@ -110,6 +112,16 @@ def shift(key):
               "WR": "N"        
              }                
     return mapper[key]
+
+
+def get_direction_name(initial):
+    directions = {
+                  "N": "North",
+                  "S": "South",
+                  "W": "West",
+                  "E": "East"
+                 }
+    return directions[initial]
 
 
 if __name__ == '__main__':
