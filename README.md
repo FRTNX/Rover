@@ -16,7 +16,7 @@ then
 
 The code simulates the movements of a rover over a grid with defined limits. Due to the transmission delay in communicating  with the rover on Mars, a list of commands is sent to the rover. The rover will execute these commands then return the coordinates of its final position.
 
-The command file format found in the ```cmds``` file is of the form:
+The formats of the commands found in the ```cmds``` file are of the form:
 ```
 8 10
 12 E
