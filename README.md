@@ -31,7 +31,10 @@ The third and final line is the list of commands the rover is to execute where
     M : moves the rover forward in the direction it faces
 
     L : Turns the rover 90 degrees to the left from its current direction
-    
+
     R : Turns the rover 90 degress to right from its current direction
     
 These commands are located in a file called ```cmds```. The values may be changed as necessary while respecting the required format described above.
+
+The program is designed to fast and lightweight. No libraries were used in its implementation, thus limiting dependencies to simeply having python 3.
+Tests have been included to ensure the rover is grid aware, knowing when it is out of bounds. Tests have also been included to make sure the rover turns on its axis properly.
