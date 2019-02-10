@@ -1,12 +1,12 @@
 # Rover simulator
 
-
 def init():
     current_pos, direction, grid_boundaries, commands = get_commands()
     run(current_pos, direction, grid_boundaries, commands)
 
 
-def get_commands():                                         
+def get_commands():
+    """Parses command file and sends the extracted values to the main run() function"""                                      
     f = open('cmds', 'r')                                                     
     ff = f.read().split('\n')                                               
     f.close()                                                    
@@ -23,6 +23,19 @@ def get_commands():
 
 
 def run(current_pos, direction, boundary, commands):
+    """Takes in parsed commands and iterates through them to return rovers final location
+       on the grid after all commands have been executed. 
+
+       params:
+           current_pos -> tuple : the Cartesian coordinates of the rovers current position.
+           direction   -> string: a letter denoting the current direction of the rover. Valid 
+                                  values are N, W, E, and S (which represent North, West, East,
+                                  and South, respectively)
+           boundary    -> tuple : Cartesian points of the grid boundary.
+           commands    -> list  : The list of commands to be executed. Valid commands are M, L, 
+                                  and R (representing Move-forward, turn-Left, and turn-Right,
+                                  respectively)
+    """
     print('pos: %s, direction: %s, boundary: %s, commands: %s' % (current_pos,
                                                                   direction,
                                                                   boundary,
@@ -35,6 +48,7 @@ def run(current_pos, direction, boundary, commands):
         if command == "M":
             current_pos = move_forward(current_pos, direction, boundary)
             if current_pos == 'Out of bounds':
+                print('Rover has moved out of surveyed grid area.')
                 exit()
         else:             
             direction = shift(direction+command)        
@@ -78,7 +92,13 @@ def out_of_bounds(x, y, x_limit, y_limit):
         return True  
 
 
-def shift(key):                                          
+def shift(key):
+    """Maps current direction acted on by either L or R command to new direction
+       
+       params:
+           key -> string: a string composed of the concatenation of the rovers current direction
+                          and the direction in which it should turn 90 degrees to.
+    """                                          
     mapper = {                                                                
               "NL": "W",                                                    
               "NR": "E",                                                   
