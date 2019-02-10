@@ -7,18 +7,18 @@ def init():
 
 def get_commands():
     """Parses command file and sends the extracted values to the main run() function"""                                      
-    f = open('cmds', 'r')                                                     
-    ff = f.read().split('\n')                                               
-    f.close()                                                    
-    print('got the following commands: %s' % ff)                          
-    raw_limits = ff[0].split()
+    commands_file = open('cmds', 'r')                                                     
+    data = commands_file.read().split('\n')                                               
+    commands_file.close()                                                    
+    print('got the following commands: %s' % data)                          
+    raw_limits = data[0].split()
     x_limit = int(raw_limits[0])
     y_limit = int(raw_limits[1])    
-    sp_raw = list(ff[1].replace(' ', ''))
-    x = int(sp_raw[0])       
-    y = int(sp_raw[1])    
-    direction = sp_raw[2]                                               
-    commands = list(ff[2])
+    starting_point_raw = list(data[1].replace(' ', ''))
+    x = int(starting_point_raw[0])       
+    y = int(starting_point_raw[1])    
+    direction = starting_point_raw[2]                                               
+    commands = list(data[2])
     return (x, y), direction, (x_limit, y_limit), commands
 
 
@@ -80,7 +80,7 @@ def move_forward(current_pos, current_direction, limits):
 
 
 def out_of_bounds(x, y, x_limit, y_limit):
-    """Checks whether the rover has moved off surveyed grid.
+    """Checks whether the rover has moved odata surveyed grid.
 
        params:
            x       -> int: x coordinate
