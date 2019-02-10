@@ -1,16 +1,20 @@
 # Rover simulator
 
 def init():
-    current_pos, direction, grid_boundaries, commands = get_commands()
+    current_pos, grid_boundaries, direction, commands = get_commands()
     run(current_pos, direction, grid_boundaries, commands)
 
 
 def get_commands():
-    """Parses command file and sends the extracted values to the main run() function"""                                      
+    """Parses command file and sends the extracted values
+       to the main run() function
+    """                                      
     commands_file = open('cmds', 'r')                                                     
-    data = commands_file.read().split('\n')                                               
-    commands_file.close()                                                    
-    print('got the following commands: %s' % data)                          
+    data = commands_file.read().split('\n')[:3]                                               
+    commands_file.close()
+    for i in range(len(data)):
+        data[i] = data[i].rstrip()  # removes trailing whitespace from line in command file                                          
+    print('got the following commands: %s' % data)                        
     raw_limits = data[0].split()
     x_limit = int(raw_limits[0])
     y_limit = int(raw_limits[1])    
@@ -19,7 +23,7 @@ def get_commands():
     y = int(starting_point_raw[1])    
     direction = starting_point_raw[2]                                               
     commands = list(data[2])
-    return (x, y), direction, (x_limit, y_limit), commands
+    return (x, y), (x_limit, y_limit), direction, commands
 
 
 def run(current_pos, direction, boundary, commands):
