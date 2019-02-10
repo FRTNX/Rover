@@ -24,7 +24,7 @@ MMLMRMMRRMML
 ```
 The first line describes the size of the current grid. This zone's boundary is at the Cartesian coordinate (8, 10).
 
-The second line describes the rovers initial position on the grid along with its direction. In this example the rover is facing east at point (1, 2).
+The second line describes the rovers initial position on the grid along with its direction. In this example the rover is facing East at point (1, 2).
 
 The third and final line is the list of commands the rover is to execute where
 
