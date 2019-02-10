@@ -16,7 +16,7 @@ then
 
 The code simulates the movements of a rover over a grid with defined limits. Due to the transmission delay in communicating  with the rover on Mars, a list of commands is sent to the rover. The rover will execute these commands then return the coordinates of its final position.
 
-The command file format is of the form:
+The command file format found in the ```cmds``` file is of the form:
 ```
 8 10
 12 E
@@ -34,7 +34,7 @@ The third and final line is the list of commands the rover is to execute where
 
     R : turns the rover 90 degress to right from its current direction
     
-These commands are located in a file called ```cmds```. The values may be changed as necessary while respecting the required format described above.
+The values may be changed as necessary while respecting the required format described above.
 
 The program is designed to fast and lightweight. No libraries were used in its implementation, thus limiting dependencies to simply having python 3.
 Tests have been included to ensure the rover is grid aware, knowing when it is out of bounds. Tests have also been included to make sure the rover turns on its axis properly.
