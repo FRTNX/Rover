@@ -1,6 +1,6 @@
 # Mars Rover Code Challenge
 
-### Installation (Linux)
+### Installation
 
 To install and run the rover, simply clone the repository
 
