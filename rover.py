@@ -63,7 +63,7 @@ def run(current_pos, direction, boundary, commands):
 
 
 def move_forward(current_pos, current_direction, limits):
-    """Moves the Rover on block forward                                       
+    """Moves the Rover one block forward                                       
                                                                             
        params:                                                             
            current_pos -> tuple: contains the current Cartesian position of the Rover.
@@ -84,7 +84,7 @@ def move_forward(current_pos, current_direction, limits):
 
 
 def out_of_bounds(x, y, x_limit, y_limit):
-    """Checks whether the rover has moved odata surveyed grid.
+    """Checks whether the rover has moved out surveyed grid.
 
        params:
            x       -> int: x coordinate
