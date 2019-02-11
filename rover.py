@@ -84,7 +84,7 @@ def move_forward(current_pos, current_direction, limits):
 
 
 def out_of_bounds(x, y, x_limit, y_limit):
-    """Checks whether the rover has moved out surveyed grid.
+    """Checks whether the rover has moved out of surveyed grid.
 
        params:
            x       -> int: x coordinate
